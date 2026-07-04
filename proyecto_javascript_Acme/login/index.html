@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acme - Sistema de Producción</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
+</head>
+
+
+<section>
+    <nav class="barra-navegacion">
+        <h2 class="logo-nav">Sistema Acme</h2>
+        <ul class="enlaces-nav">
+            <li><a href="../usuarios/index.html">Usuarios</a></li>
+            <li><a href="../inventario/index.html">Inventario</a></li>
+            <li><a href="../produccion/index.html">Producción</a></li>
+        </ul>
+    </nav>
+</section>
+<body>
+    <div class="container">
+
+        <div id="login-section" class="form-section">
+            <h2>Iniciar Sesión</h2>
+            <form id="login-form">
+                <label for="login-id">Número de Identificación</label>
+                <input type="text" id="login-id" required>
+
+                <label for="login-password">Contraseña</label>
+                <input type="password" id="login-password" required>
+
+                <button type="submit" class="btn-primary">Ingresar</button>
+            </form>
+            <p>¿No tienes cuenta? <button type="button" id="go-to-register" class="btn-link">Regístrate aquí</button>
+            </p>
+        </div>
+
+        <div id="register-section" class="form-section hidden">
+            <h2>Registro de Usuario</h2>
+            <form id="register-form">
+                <label for="reg-id">Número de Identificación</label>
+                <input type="text" id="reg-id" required>
+
+                <label for="reg-name">Nombre Completo</label>
+                <input type="text" id="reg-name" required>
+
+                <label for="reg-role">Cargo</label>
+                <input type="text" id="reg-role" required>
+
+                <label for="reg-password">Contraseña</label>
+                <input type="password" id="reg-password" required>
+
+                <label for="reg-password-confirm">Confirmar Contraseña</label>
+                <input type="password" id="reg-password-confirm" required>
+
+                <button type="submit" class="btn-primary">Registrar</button>
+            </form>
+            <p>¿Ya tienes cuenta? <button type="button" id="go-to-login" class="btn-link">Inicia sesión</button></p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

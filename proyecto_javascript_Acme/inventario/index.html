@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
+</head>
+
+
+<section>
+    <nav class="barra-navegacion">
+        <h2 class="logo-nav">Sistema Acme</h2>
+        <ul class="enlaces-nav">
+            <li><a href="../usuarios/index.html">Usuarios</a></li>
+            <li><a href="../inventario/index.html">Inventario</a></li>
+            <li><a href="../produccion/index.html">Producción</a></li>
+        </ul>
+    </nav>
+</section>
+
+<body>
+    <div class="container">
+
+        <h2>Registrar Nuevo Elemento</h2>
+        <form id="formulario-registro">
+            <div class="grupo-inputs">
+                <div class="input-contenedor">
+                    <label for="codigo-producto">Código</label>
+                    <input type="text" id="codigo-producto" required>
+                </div>
+                <div class="input-contenedor">
+                    <label for="nombre-producto">Nombre</label>
+                    <input type="text" id="nombre-producto" required>
+                </div>
+                <div class="input-contenedor">
+                    <label for="proveedor-producto">Proveedor</label>
+                    <input type="text" id="proveedor-producto" required>
+                </div>
+                <div class="input-contenedor">
+                    <label for="tipo-producto">Tipo de Elemento</label>
+                    <select id="tipo-producto" required>
+                        <option value="Materia Prima">Materia Prima</option>
+                        <option value="Producto Terminado">Producto Terminado (A producir)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="contenedor-formula" class="oculto">
+                <label for="formula-producto">Fórmula (Ej: codigo1:cantidad, codigo2:cantidad)</label>
+                <input type="text" id="formula-producto" placeholder="Ej: mat01:100, mat02:50">
+            </div>
+
+            <button type="submit" class="btn-primario">Crear Elemento</button>
+        </form>
+
+        <hr>
+
+        <h2>Ingresar / Aumentar Stock</h2>
+        <form id="formulario-stock">
+            <div class="grupo-inputs">
+                <div class="input-contenedor">
+                    <label for="codigo-stock">Código del Producto o Materia Prima</label>
+                    <input type="text" id="codigo-stock" required>
+                </div>
+                <div class="input-contenedor">
+                    <label for="cantidad-stock">Cantidad a Ingresar</label>
+                    <input type="number" id="cantidad-stock" required min="1">
+                </div>
+            </div>
+            <button type="submit" class="btn-primario">Aumentar Stock</button>
+        </form>
+
+        <hr>
+
+        <h2>Lista de Inventario</h2>
+
+        <div class="buscador-contenedor">
+            <label for="buscador">Filtrar productos:</label>
+            <input type="text" id="buscador" placeholder="Buscar por código, nombre, etc...">
+        </div>
+
+        <table id="tabla-inventario">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Proveedor</th>
+                    <th>Tipo</th>
+                    <th>Stock (Cantidad)</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo-tabla-inventario">
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>
