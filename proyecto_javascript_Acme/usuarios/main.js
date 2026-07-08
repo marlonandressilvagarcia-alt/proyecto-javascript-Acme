@@ -75,13 +75,23 @@ formularioUsuario.addEventListener('submit', function (evento) {
     evento.preventDefault();
 
     const informacionUsuario = {
-        id: inputIdentificacion.value,
-        nombre: inputNombre.value,
-        cargo: inputCargo.value,
-        password: inputContrasena.value
+        id: inputIdentificacion.value.trim(),
+        nombre: inputNombre.value.trim(),
+        cargo: inputCargo.value.trim(),
+        password: inputContrasena.value.trim()
     };
 
-    fetch(URL_BASE_DATOS + '/usuarios/' + inputIdentificacion.value + '.json', {
+    if (
+        !informacionUsuario.id ||
+        !informacionUsuario.nombre ||
+        !informacionUsuario.cargo ||
+        !informacionUsuario.password
+    ) {
+        alert("Todos los campos son obligatorios.");
+        return;
+    }
+
+    fetch(URL_BASE_DATOS + '/usuarios/' + informacionUsuario.id + '.json', {
         method: 'PUT',
         body: JSON.stringify(informacionUsuario)
     })
@@ -90,5 +100,4 @@ formularioUsuario.addEventListener('submit', function (evento) {
             cargarUsuarios();
         });
 });
-
 cargarUsuarios();
