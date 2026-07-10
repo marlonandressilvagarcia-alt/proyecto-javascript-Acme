@@ -85,3 +85,64 @@ formularioProduccion.addEventListener('submit', async function (evento) {
     alert('Producción exitosa. El inventario ha sido actualizado correctamente.');
     formularioProduccion.reset();
 });
+
+//Codigo Examen
+
+formularioProduccion.addEventListener("submit", async function (evento) {
+    evento.preventDefault();
+
+
+    const inputCodigo = document.getElementById('codigo-producir').value;
+    const inputCantidad = document.getElementById('cantidad-producir').value;
+    const inputFecha = document.getElementById("fecha-produccion").value;
+    const inputNombre = document.getElementById("nombre-producto").value;
+
+    const producto = {
+        codigo: inputCodigo,
+        cantidad: inputCantidad,
+        nombre: inputNombre,
+        fecha: inputFecha
+    }
+
+    await fetch(URL_BASE_DATOS + '/producciones/' + producto.fecha + '.json', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(producto)
+    }); 
+});
+
+const formularioFiltrar = document.getElementById("formulario-filtar-produccion");
+const inputFechaFiltro = document.getElementById("filtrar-fecha");
+const cuerpoTablaProducciones = document.getElementById("cuerpo-tabla-producciones");
+
+formularioFiltrar.addEventListener("submit", async function(evento){
+    evento.preventDefault();
+
+    const fecha = inputFechaFiltro.value;
+
+    const respuesta = await fetch(URL_BASE_DATOS + "/producciones/" + fecha + ".json");
+    const producciones = await respuesta.json();
+
+    cuerpoTablaProducciones.innerHTML = "";
+
+    if(!producciones){
+        alert("No existen productos fabricados en esa fecha.");
+        return;
+    }
+
+    for(let id in producciones){
+
+        const producto = producciones[id];
+
+        cuerpoTablaProducciones.innerHTML += `
+            <tr>
+                <td>${producto.codigo}</td>
+                <td>${producto.nombre}</td>
+                <td>${producto.cantidad}</td>
+            </tr>
+        `;
+    }
+
+});

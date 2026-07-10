@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +22,7 @@
         </ul>
     </nav>
 </section>
+
 <body>
     <div class="container">
         <h2>Fabricar Producto</h2>
@@ -34,9 +36,44 @@
                     <label for="cantidad-producir">Cantidad a Fabricar (Unidades)</label>
                     <input type="number" id="cantidad-producir" required min="1">
                 </div>
+                <div class="input-contenedor">
+                    <label for="">Nombre producto</label>
+                    <input type="text" id="nombre-producto" required>
+                </div>
+                <div class="input-contenedor">
+                    <label for="">Fecha de produccion</label>
+                    <input id="fecha-produccion" type="date">
+                </div>
             </div>
             <button type="submit" class="btn-primario">Fabricar y Actualizar Inventario</button>
         </form>
     </div>
+
+    <div class="container">
+        <h2>Filtrar produccion</h2>
+        <form action="" id="formulario-filtar-produccion">
+            <div class="grupo-inputs">
+                <div class="input-contenedor">
+                    <label for="">Fecha de produccion del producto</label>
+                    <input id="filtrar-fecha" type="date">
+                </div>
+                <button id="btn-filtrar" type="submit">Filtrar</button>
+            </div>
+        </form>
+        <table id="tabla-producciones">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+
+            <tbody id="cuerpo-tabla-producciones">
+
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>
